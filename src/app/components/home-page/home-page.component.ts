@@ -8,17 +8,20 @@ import { PRODUCTS } from 'src/app/mock-products';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  products = PRODUCTS
-  constructor() { }
+  products: Product[] =  []
 
+  constructor() { }
+  
   ngOnInit(): void {
     this.registerProduct()
+    this.getProducts()
+    
   }
   registerProduct() {
     localStorage.setItem('products', JSON.stringify(PRODUCTS))
   }
-  // getProducts(): Product[] {
-  //   JSON.parse(localStorage.getItem('products')) 
-                
-  // }
+  getProducts() {
+   this.products = JSON.parse(`${localStorage.getItem('products')}`)
+      
+  }
 }

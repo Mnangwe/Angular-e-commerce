@@ -5,7 +5,7 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root'
 })
 export class ProductService {
-  private _localStorage: Storage;
+  
 
-  constructor( private localStorage: LocalStorageService) { }
+  constructor( ) { }
 }
