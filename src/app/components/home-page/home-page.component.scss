@@ -3,5 +3,19 @@
     flex-wrap: wrap;
     gap: 5px;
     margin-top: 4%;
-    cursor: pointer;
+    img {
+        cursor: pointer;
+    }
+}
+.section-display {
+    background: white;
+    margin-top: 4%;
+}
+.intro{
+    display: flex;
+    justify-content: space-between;
+    
+    .container {
+        margin-top: 4% !important;
+    }
 }

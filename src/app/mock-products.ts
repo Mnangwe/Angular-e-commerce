@@ -25,4 +25,5 @@ export const PRODUCTS: Product[] = [
         price: 400,
         image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEFV0A-htk-a3r1jJjj2gtCmcVL9S3RMjwaw&usqp=CAU'
     }
+    
 ]

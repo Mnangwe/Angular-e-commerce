@@ -1,6 +1,6 @@
 <section class="log-in">
     <div class="container">
-        <form>
+        <div class="form">
             <div class="container">
                 <div class="heading">
                     <div class="logo">
@@ -18,32 +18,32 @@
                 <!-- Email input -->
               <div class="form-outline input-group my-5">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-user icon"></i></span>
-                <input type="email" id="form2Example1" class="form-control" placeholder="Username" aria-describedby="basic-addon1"/>
+                <input type="email" id="form2Example1" class="form-control" placeholder="Username" [(ngModel)]="email" aria-describedby="basic-addon1"/>
               </div>
             
               <!-- Password input -->
               <div class="form-outline input-group my-5">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock icon"></i></span>
                 
-                <input type="password" id="form2Example2" class="form-control" placeholder="Password" aria-describedby="basic-addon1"/>
+                <input type="password" id="form2Example2" class="form-control" placeholder="Password" [(ngModel)]="password" aria-describedby="basic-addon1"/>
               </div>
             
               <!-- Re-typed Password input -->
               <div class="form-outline input-group my-5">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock icon"></i></span>
                 
-                <input type="password" id="form2Example2" class="form-control" placeholder="Re-type password" aria-describedby="basic-addon1"/>
+                <input type="password" id="form2Example2" class="form-control" placeholder="Re-type password" [(ngModel)]="repassword" aria-describedby="basic-addon1"/>
               </div>
             
               <!-- Submit button -->
               <div class="submit">
-                <button type="button" class="btn btn-primary btn-large btn-block mb-4 bg-black">Sign in</button>
+                <button type="button" class="btn btn-primary btn-large btn-block mb-4 bg-black" (click)="register()">Sign in</button>
               </div>
               
               <p>Don't have an account? <a href="#!" class="text-black" routerLink="/login">Login</a></p>
               
             </div>
             
-        </form>
+        </div>
     </div>
 </section>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/product';
 import { PRODUCTS } from 'src/app/mock-products';
+import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -8,20 +10,33 @@ import { PRODUCTS } from 'src/app/mock-products';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  products: Product[] =  []
-
-  constructor() { }
+  products: Product[] =  JSON.parse(`${localStorage.getItem('products')}`) ?
+  JSON.parse(`${localStorage.getItem('products')}`) : []
+  value: number = 1
+  cart: Product[] = []
+  constructor(private productService: ProductService, private router: Router) { }
   
   ngOnInit(): void {
-    this.registerProduct()
     this.getProducts()
     
   }
-  registerProduct() {
-    localStorage.setItem('products', JSON.stringify(PRODUCTS))
-  }
-  getProducts() {
-   this.products = JSON.parse(`${localStorage.getItem('products')}`)
+  getProducts(): void{
+    if(!localStorage.getItem('token')) {
+      this.router.canceledNavigationResolution
+      return alert('Please ensure you log in!')
+    }else{
+      this.productService.getProduct().subscribe(items => this.products = items)
+    }
+   
       
+  }
+  addToCart(index: number){
+    let product = {
+      quantity: this.value,
+      ...this.products[index]
+    }
+    this.cart.push(product)
+    console.log(this.cart)
+    localStorage.setItem('cart', JSON.stringify(this.cart))
   }
 }

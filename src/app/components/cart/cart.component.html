@@ -1,1 +1,106 @@
-<p>cart works!</p>
+<!-- <section class="home">
+
+    <div class="container" >
+      <div class="section-display" *ngIf="cart.length; else elseBlock">
+        <div class="intro">
+          <div class="container">
+            <div class="logo">
+                <button class="btn btn-success" (click)="checkout()">Checkout</button>
+            </div>
+            <div class="total-cost" >Total Amount: R {{total}}</div>
+          </div>
+        </div>
+        <div class="cards container">
+          <div class="card-wrapper">
+            <div class="card" style="width: 18rem;" *ngFor="let product of cart; let i = index" >
+              <img [src]="product.image" class="card-img-top" [alt]="product.title" routerLink="/product/{{product.id}}">
+              <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="buttons">
+                  <button class="btn btn-secondary" ><i class="fa fa-shopping-cart"></i></button>
+                  <button class="btn btn-outline-success" ><i class="fa fa-edit"></i></button>
+                  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                  <input type="number" name="" min="1" [(ngModel)]="product.quantity" id="">
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section-display">
+        <ng-template #elseBlock class="alter"><h2 class="alter display-4">Your cart is empty</h2></ng-template>
+   
+      </div>
+    </div>
+</section> -->
+
+<section class="cart">
+    <div class="container">
+        <main id="cart" style="max-width:960px">
+            <h1 *ngIf="cart.length">Your Cart</h1>
+            <div class="container-fluid">
+              <div class="row align-items-start" *ngIf="cart.length; else elseBlock">
+                <div class="col-12 col-sm-8 items" *ngFor="let product of cart">
+                  <!--1-->
+                  <div class="cartItem row align-items-start">
+                    <div class="col-3 mb-2">
+                      <img class="w-100" [src]="product.image" [alt]="product.title">
+                    </div>
+                    <div class="col-5 mb-2">
+                      <h6 class="">Dark Art 1</h6>
+                      <p class="pl-1 mb-0">20 x 24</p>
+                      <p class="pl-1 mb-0">{{product.title}}</p>
+                    </div>
+                    <div class="col-2">
+                      <p class="cartItemQuantity p-1 text-center">{{product.quantity}}</p>
+                    </div>
+                    <div class="col-2">
+                      <p id="cartItem1Price">R {{product.price}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+                <div class="col-12 col-sm-4 p-3 proceed form">
+                  <div class="row m-0">
+                    <div class="col-sm-8 p-0">
+                      <h6>Subtotal</h6>
+                    </div>
+                    <div class="col-sm-4 p-0">
+                      <p id="subtotal">$132.00</p>
+                    </div>
+                  </div>
+                  <div class="row m-0">
+                    <div class="col-sm-8 p-0 ">
+                      <h6>Tax</h6>
+                    </div>
+                    <div class="col-sm-4 p-0">
+                      <p id="tax">$6.40</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mx-0 mb-2">
+                    <div class="col-sm-8 p-0 d-inline">
+                      <h5>Total</h5>
+                    </div>
+                    <div class="col-sm-4 p-0">
+                      <p id="total">R {{total}}</p>
+                    </div>
+                  </div>
+                  <button id="btn-checkout" class="shopnow" (click)="checkout()">Checkout</button>
+                </div>
+              </div>
+              <div class="row align-items-start">
+                  <ng-template #elseBlock>
+                      <h2>
+                          Your cart is empty
+                      </h2>
+                  </ng-template>
+              </div>
+            </div>
+            
+          </main>
+    </div>
+</section>
