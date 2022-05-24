@@ -13,6 +13,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddProductComponent } from './modals/add-product/add-product.component';
 import { EditProductComponent } from './modals/edit-product/edit-product.component';
+import { ValidationComponent } from './components/validation/validation.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditProductComponent } from './modals/edit-product/edit-product.compone
     LogInComponent,
     NotFoundComponent,
     AddProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    ValidationComponent
   ],
   imports: [
     BrowserModule,
