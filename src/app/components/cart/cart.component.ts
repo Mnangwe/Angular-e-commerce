@@ -7,19 +7,28 @@ import { Location } from '@angular/common';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cart: Product[] = JSON.parse(`${localStorage.getItem('cart')}`) ?
-  JSON.parse(`${localStorage.getItem('cart')}`) : []
-
+  cart: any 
+  
   total: number = 0
-
+  
   constructor( private location: Location) { }
 
   ngOnInit(): void {
+    this.getCart()
+    
+    console.log(this.cart)
+  }
+
+  getCart() {
+    this.cart = JSON.parse(`${localStorage.getItem('cart')}`) ?
+    JSON.parse(`${localStorage.getItem('cart')}`) : []
     this.totalCost()
   }
 
+  
+
   totalCost(){
-    this.cart.map( elem => {
+    this.cart.map( (elem: any) => {
       if(elem.quantity) this.total += elem.price*elem.quantity
     })
   }

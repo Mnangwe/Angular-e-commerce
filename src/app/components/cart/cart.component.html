@@ -43,25 +43,10 @@
             <h1 *ngIf="cart.length">Your Cart</h1>
             <div class="container-fluid">
               <div class="row align-items-start" *ngIf="cart.length; else elseBlock">
-                <div class="col-12 col-sm-8 items" *ngFor="let product of cart">
+                <div class="col-12 col-sm-8 items" *ngFor="let cart1 of cart; let i = index">
                   <!--1-->
-                  <div class="cartItem row align-items-start">
-                    <div class="col-3 mb-2">
-                      <img class="w-100" [src]="product.image" [alt]="product.title">
-                    </div>
-                    <div class="col-5 mb-2">
-                      <h6 class="">Dark Art 1</h6>
-                      <p class="pl-1 mb-0">20 x 24</p>
-                      <p class="pl-1 mb-0">{{product.title}}</p>
-                    </div>
-                    <div class="col-2">
-                      <p class="cartItemQuantity p-1 text-center">{{product.quantity}}</p>
-                    </div>
-                    <div class="col-2">
-                      <p id="cartItem1Price">R {{product.price}}</p>
-                    </div>
-                  </div>
-                  <hr>
+                  <app-cart-item [product]="cart1" [i]="i" [cart]="cart" [method]="totalCost"></app-cart-item>
+                  
                 </div>
                 <div class="col-12 col-sm-4 p-3 proceed form">
                   <div class="row m-0">
@@ -69,7 +54,7 @@
                       <h6>Subtotal</h6>
                     </div>
                     <div class="col-sm-4 p-0">
-                      <p id="subtotal">$132.00</p>
+                      <p id="subtotal">{{ total | currency: 'ZAR' }}</p>
                     </div>
                   </div>
                   <div class="row m-0">
@@ -77,7 +62,7 @@
                       <h6>Tax</h6>
                     </div>
                     <div class="col-sm-4 p-0">
-                      <p id="tax">$6.40</p>
+                      <p id="tax">{{ total * 0.014 | currency: 'ZAR' }}</p>
                     </div>
                   </div>
                   <hr>
@@ -86,7 +71,7 @@
                       <h5>Total</h5>
                     </div>
                     <div class="col-sm-4 p-0">
-                      <p id="total">R {{total}}</p>
+                      <p id="total">{{total * 1.014 | currency: 'ZAR'}}  </p>
                     </div>
                   </div>
                   <button id="btn-checkout" class="shopnow" (click)="checkout()">Checkout</button>

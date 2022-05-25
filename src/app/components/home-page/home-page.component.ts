@@ -14,6 +14,7 @@ export class HomePageComponent implements OnInit {
   JSON.parse(`${localStorage.getItem('products')}`) : []
   value: number = 1
   cart: Product[] = []
+  cartLength: any
   constructor(private productService: ProductService, private router: Router) { }
   
   ngOnInit(): void {
@@ -22,7 +23,7 @@ export class HomePageComponent implements OnInit {
   }
   getProducts(): void{
     if(!localStorage.getItem('token')) {
-      this.router.canceledNavigationResolution
+      this.router.navigate(['login'])
       return alert('Please ensure you log in!')
     }else{
       this.productService.getProduct().subscribe(items => this.products = items)
@@ -38,5 +39,10 @@ export class HomePageComponent implements OnInit {
     this.cart.push(product)
     console.log(this.cart)
     localStorage.setItem('cart', JSON.stringify(this.cart))
+    if(localStorage.getItem('cart')){
+
+      this.cartLength = JSON.parse(`${localStorage.getItem('cart')}`).length
+      console.log(this.cartLength)
+    }
   }
 }
